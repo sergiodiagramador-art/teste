@@ -1,1 +1,13 @@
 
+<svg viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="80" fill="#d32f2f"/>
+  <rect x="80" y="190" width="352" height="180" rx="28" fill="#ffffff"/>
+  <path d="M80 245H55c-20 0-35 16-35 35v55c0 20 15 35 35 35h25z" fill="#ffffff"/>
+  <path d="M432 245h25c20 0 35 16 35 35v55c0 20-15 35-35 35h-25z" fill="#ffffff"/>
+  <rect x="235" y="130" width="42" height="130" fill="#d32f2f"/>
+  <rect x="191" y="174" width="130" height="42" fill="#d32f2f"/>
+  <circle cx="150" cy="380" r="42" fill="#333333"/>
+  <circle cx="362" cy="380" r="42" fill="#333333"/>
+  <circle cx="150" cy="380" r="18" fill="#dddddd"/>
+  <circle cx="362" cy="380" r="18" fill="#dddddd"/>
+</svg>
