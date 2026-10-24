@@ -260,13 +260,6 @@ body:has(#modo-noturno-v8:checked) nav button.active{color:#34d399!important;tex
 <h3>HOSPITAIS · PIN DE TESTE</h3>
 <p style="margin:4px 0 8px;color:#475569;font-size:13px">Toque em PIN TESTE no hospital onde você está. A gravação é somente no ambiente isolado.</p>
 <div id="lista-hospitais-pin-teste-v6" style="display:block;margin:0 0 12px"></div>
-<hr/>
-<h3>Gestão de Máquinas</h3>
-<input id="m-id" placeholder="Número da Máquina" type="number"/>
-<button class="btn" onclick="addMaq()" style="background:#2563eb; color:white">ADICIONAR MÁQUINA</button>
-<hr/>
-<div id="lista-frota"></div>
-</div>
 <div class="page" id="t5">
 <h3>Relatório de Hoje</h3>
 <button class="btn" onclick="salvarRelatorio()" style="background:#2563eb;color:white">💾 SALVAR RELATÓRIO</button>
@@ -1256,8 +1249,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 </style>
 <style id="sosrim-test-tab-visibility-fix-v6">#app .page{display:none!important}#app .page.active{display:block!important}#app nav{position:fixed!important;z-index:100!important;pointer-events:auto!important}#app nav button{position:relative!important;z-index:2!important;pointer-events:auto!important;touch-action:manipulation!important;cursor:pointer!important}#app nav::before{pointer-events:none!important}</style>
 <script id="sosrim-test-tab-button-fix-v6">(function(){function bind(){var nav=document.querySelector('#app nav');if(!nav)return;nav.querySelectorAll('button[id^="b"]').forEach(function(b){if(b.dataset.tabFixV6)return;b.dataset.tabFixV6="1";var n=Number(b.id.slice(1));b.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();window.setTab(n)},true);b.addEventListener('touchend',function(e){if(e.cancelable)e.preventDefault();window.setTab(n)}, {passive:false})})}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',bind,{once:true});else bind();setTimeout(bind,0)})();</script>
-</body>
-
 <script id="sosrim-test-hospital-readonly-rest-fallback-v1">
 (function(){
   'use strict';
@@ -1274,5 +1265,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   setInterval(function(){var p=document.getElementById('t4');if(p&&p.classList.contains('active'))load()},3000);
 })();
 </script>
+</body>
+
+
 
 </html>
