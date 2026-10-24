@@ -275,12 +275,12 @@ body:has(#modo-noturno-v8:checked) nav button.active{color:#34d399!important;tex
 <h3>2. Cliques e ações no aplicativo</h3><div id="lista-eventos" style="font-size:16px;background:white;padding:10px;border-radius:10px;"></div>
 <h3>3. Relatório geral — todos os motoristas</h3><div id="lista-geral" style="font-size:16px;background:white;padding:10px;border-radius:10px;"></div>
 </div>
-<nav>
-<button class="active" id="b1" onclick="setTab(1)">PAINEL</button>
-<button id="b2" onclick="setTab(2)">SERVIÇOS</button>
-<button id="b3" onclick="setTab(3)">HOSP</button>
-<button id="b4" onclick="setTab(4)">FROTA</button>
-<button id="b5" onclick="setTab(5)">RELAT</button>
+<nav aria-label="Abas do teste">
+<a class="active" id="b1" href="#t1" onclick="setTab(1)">PAINEL</a>
+<a id="b2" href="#t2" onclick="setTab(2)">SERVIÇOS</a>
+<a id="b3" href="#t3" onclick="setTab(3)">HOSP</a>
+<a id="b4" href="#t4" onclick="setTab(4)">PINs</a>
+<a id="b5" href="#t5" onclick="setTab(5)">RELAT</a>
 </nav>
 </div>
 <div class="modal" id="modal" style="display:none;">
@@ -1245,6 +1245,15 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 <script id="sosrim-full-layout-label-v3">(function(){function f(){var e=document.getElementById('sosrim-test-isolated-banner');if(e)e.textContent='TESTE DE LETREIRO + PIN · MÁQUINAS DO 3.0 SOMENTE LEITURA · PINs ISOLADOS'}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',f,{once:true});else f()})();</script>
 
 <script id="hospitais-pin-teste-na-aba4-v6">(function(){function draw(){var host=document.getElementById('lista-hospitais-pin-teste-v6');if(!host)return;var hs=window.sosrimTestHospitalsV2||{};host.innerHTML='';function row(name,fn){var r=document.createElement('div');r.style.cssText='display:flex;align-items:center;justify-content:space-between;gap:8px;margin:5px 0;padding:9px 10px;border:1px solid #d1d5db;border-radius:9px;background:#fff';var label=document.createElement('strong');label.textContent=name;label.style.cssText='font-size:14px;color:#1f2937';var b=document.createElement('button');b.type='button';b.textContent='📍 PIN TESTE';b.style.cssText='min-height:38px;padding:6px 10px;border:0;border-radius:8px;background:#166534;color:white;font-weight:900;touch-action:manipulation';b.onclick=fn;r.appendChild(label);r.appendChild(b);host.appendChild(r)}row('BASE',function(){if(typeof window.capturarPINBaseTesteV2==='function')window.capturarPINBaseTesteV2();else alert('Função de PIN da Base indisponível neste arquivo.')});Object.keys(hs).sort(function(a,b){return String(hs[a].name||'').localeCompare(String(hs[b].name||''),'pt-BR')}).forEach(function(k){var name=hs[k]&&hs[k].name||k;row(name,function(){window.capturarPINHospital(name)})})}window.renderHospitaisPinTesteV6=draw;document.addEventListener('DOMContentLoaded',draw,{once:true});setInterval(function(){var p=document.getElementById('t4');if(p&&p.classList.contains('active')&&typeof window.sosrimTestHospitalsV2==='object')draw()},2500)})();</script>
+<style id="sosrim-test-native-tabs-v7">
+#app .page{display:none!important;scroll-margin-top:10px}
+#app .page.active,#app .page:target{display:block!important}
+#app nav{display:flex!important;position:fixed!important;z-index:100!important;pointer-events:auto!important}
+#app nav a{flex:1 1 0;min-width:0;min-height:42px;display:flex;align-items:center;justify-content:center;padding:5px 2px;box-sizing:border-box;color:#fff;text-decoration:none;text-align:center;font:900 11px/1.1 Arial,sans-serif;white-space:nowrap;position:relative;z-index:2;touch-action:manipulation}
+#app nav a.active,#app nav a:focus-visible{border-radius:999px;background:linear-gradient(180deg,#3b5c1b 0%,#2f4f16 48%,#243d10 100%);color:#fff;box-shadow:0 2px 7px rgba(2,20,10,.38)}
+#app .page:target~nav a{background:transparent}
+#app #t1:target~nav #b1,#app #t2:target~nav #b2,#app #t3:target~nav #b3,#app #t4:target~nav #b4,#app #t5:target~nav #b5{border-radius:999px;background:linear-gradient(180deg,#3b5c1b 0%,#2f4f16 48%,#243d10 100%);color:#fff;box-shadow:0 2px 7px rgba(2,20,10,.38)}
+</style>
 <style id="sosrim-test-tab-visibility-fix-v6">#app .page{display:none!important}#app .page.active{display:block!important}#app nav{position:fixed!important;z-index:100!important;pointer-events:auto!important}#app nav button{position:relative!important;z-index:2!important;pointer-events:auto!important;touch-action:manipulation!important;cursor:pointer!important}#app nav::before{pointer-events:none!important}</style>
 <script id="sosrim-test-tab-button-fix-v6">(function(){function bind(){var nav=document.querySelector('#app nav');if(!nav)return;nav.querySelectorAll('button[id^="b"]').forEach(function(b){if(b.dataset.tabFixV6)return;b.dataset.tabFixV6="1";var n=Number(b.id.slice(1));b.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();window.setTab(n)},true);b.addEventListener('touchend',function(e){if(e.cancelable)e.preventDefault();window.setTab(n)}, {passive:false})})}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',bind,{once:true});else bind();setTimeout(bind,0)})();</script>
 </body>
