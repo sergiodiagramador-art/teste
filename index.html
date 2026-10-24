@@ -1257,4 +1257,22 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 <style id="sosrim-test-tab-visibility-fix-v6">#app .page{display:none!important}#app .page.active{display:block!important}#app nav{position:fixed!important;z-index:100!important;pointer-events:auto!important}#app nav button{position:relative!important;z-index:2!important;pointer-events:auto!important;touch-action:manipulation!important;cursor:pointer!important}#app nav::before{pointer-events:none!important}</style>
 <script id="sosrim-test-tab-button-fix-v6">(function(){function bind(){var nav=document.querySelector('#app nav');if(!nav)return;nav.querySelectorAll('button[id^="b"]').forEach(function(b){if(b.dataset.tabFixV6)return;b.dataset.tabFixV6="1";var n=Number(b.id.slice(1));b.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();window.setTab(n)},true);b.addEventListener('touchend',function(e){if(e.cancelable)e.preventDefault();window.setTab(n)}, {passive:false})})}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',bind,{once:true});else bind();setTimeout(bind,0)})();</script>
 </body>
+
+<script id="sosrim-test-hospital-readonly-rest-fallback-v1">
+(function(){
+  'use strict';
+  var NS='sosrimV8_chegada_isolado_20261024';
+  var HOSPITALS_URL='https://sosrim-592ab-default-rtdb.firebaseio.com/sosrimV8_reforma_20260830/hospitals.json';
+  var PINS_URL='https://sosrim-592ab-default-rtdb.firebaseio.com/'+NS+'/testPins.json';
+  var busy=false,lastGood=0;
+  function status(text){var host=document.getElementById('lista-hospitais-pin-teste-v6');if(!host)return;var el=document.getElementById('pin-teste-leitura-status-v1');if(!el){el=document.createElement('div');el.id='pin-teste-leitura-status-v1';el.style.cssText='margin:5px 0;padding:7px 9px;border-radius:8px;background:#eff6ff;color:#1e3a8a;font-size:12px;font-weight:700';host.parentNode.insertBefore(el,host)}el.textContent=text;}
+  function fillSelector(hs){var e=document.getElementById('gps-pin-place-v5');if(!e)return;var old=e.value;e.innerHTML='<option value="">Escolha o hospital</option><option value="BASE">BASE</option>';Object.keys(hs).sort(function(a,b){return String(hs[a].name||'').localeCompare(String(hs[b].name||''),'pt-BR')}).forEach(function(k){var o=document.createElement('option');o.value=k;o.textContent=hs[k].name||k;e.appendChild(o)});e.value=old}
+  function request(url){return fetch(url,{method:'GET',cache:'no-store'}).then(function(r){if(!r.ok)throw Error('HTTP '+r.status);return r.json()})}
+  function load(){if(busy||Date.now()-lastGood<30000)return;busy=true;Promise.all([request(HOSPITALS_URL),request(PINS_URL)]).then(function(values){var official=values[0]||{},pins=values[1]||{},hs={};Object.keys(official).forEach(function(k){var h=official[k]||{},pin=pins.hospitals&&pins.hospitals[k]||{};hs[k]={name:String(h.name||k),lat:pin.lat==null?null:pin.lat,lng:pin.lng==null?null:pin.lng}});window.sosrimTestHospitalsV2=hs;if(typeof hospitais!=='undefined')hospitais=hs;lastGood=Date.now();if(typeof renderHosp==='function')renderHosp();if(typeof preencherListasV8==='function')preencherListasV8();fillSelector(hs);status(Object.keys(hs).length+' hospitais carregados em leitura; coordenadas e gravações de PIN permanecem no namespace de teste.');if(typeof window.renderHospitaisPinTesteV6==='function')window.renderHospitaisPinTesteV6()}).catch(function(){status('Não foi possível carregar a lista de hospitais. Tente novamente; nenhum dado foi alterado.')}).then(function(){busy=false})}
+  window.sosrimReloadTestHospitalsV1=load;
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',load,{once:true});else load();
+  setInterval(function(){var p=document.getElementById('t4');if(p&&p.classList.contains('active'))load()},3000);
+})();
+</script>
+
 </html>
