@@ -250,8 +250,8 @@ body:has(#modo-noturno-v8:checked) nav button.active{color:#34d399!important;tex
 <div id="lista-recolher">Nenhum hospital liberado agora.</div>
 </div>
 </div> <div class="page" id="t3">
-<h3 class="area-titulo-v8">HOSPITAIS (INCLUSÃO E EXCLUSÃO)</h3>
-<input id="h-nome" type="text" placeholder="INCLUIR NOVO HOSPITAL" translate="no" class="notranslate" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" inputmode="text" style="width:100%;box-sizing:border-box;padding:13px 16px;margin:0 0 8px;border:1px solid #86efac;border-radius:10px;background:#f0f8f2;color:#14532d;font-size:16px;font-weight:800"/>
+<h3 class="area-titulo-v8" style="font-size:clamp(12px,3.7vw,16px);white-space:nowrap;letter-spacing:.2px;padding-left:5px;padding-right:5px">HOSPITAIS (INCLUSÃO E EXCLUSÃO)</h3>
+<input id="h-nome" type="text" placeholder="DIGITE AQUI NOVO HOSPITAL" translate="no" class="notranslate" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" inputmode="text" style="width:100%;box-sizing:border-box;padding:13px 16px;margin:0 0 8px;border:1px solid #86efac;border-radius:10px;background:#f0f8f2;color:#14532d;font-size:16px;font-weight:800"/>
 <button class="btn" onclick="capturarPIN()" style="width:100%;box-sizing:border-box;display:block;margin:0 0 8px;background:#2f7a4f;color:white">📍 SALVAR PIN NESTE LOCAL</button>
 <button class="btn" onclick="addHosp()" style="width:100%;box-sizing:border-box;display:block;margin:0 0 12px;background:#2f7a4f;color:white">SALVAR HOSPITAL NA LISTA</button>
 <div id="lista-hospitais"></div>
@@ -1243,10 +1243,10 @@ body.noturno-v8 #sosrim-arrival-strip-v1.sa-tone-lilac,body:has(#modo-noturno-v8
 <style id="cabecalho-topo-respiro-2px-v1">@media(max-width:600px){body header{margin-top:2px!important}}</style>
 
 <style id="relatorios-busca-padrao-vans-v1">
-#t5 .rel5>h3,#t5 #bs-box>h3,#t5 .rel5 .print-target h3{background:#2f7a4f!important;color:#fff!important;text-align:center!important;font-size:17px!important;font-weight:900!important;letter-spacing:.6px!important;text-transform:uppercase!important;border-radius:10px!important;padding:10px 8px!important;margin:0 0 12px!important;box-shadow:0 2px 5px #0002!important;box-sizing:border-box!important;width:100%!important}
+#t5 .rel5>h3,#t5 #bs-box>h3{background:#2f7a4f!important;color:#fff!important;text-align:center!important;font-size:17px!important;font-weight:900!important;letter-spacing:.6px!important;text-transform:uppercase!important;border-radius:10px!important;padding:10px 8px!important;margin:0 0 12px!important;box-shadow:0 2px 5px #0002!important;box-sizing:border-box!important;width:100%!important}
 #t5 .rel5>h3.rel5-title-wide-v1{white-space:nowrap!important;overflow:hidden!important;text-overflow:clip!important;font-size:clamp(11px,3.65vw,15px)!important;letter-spacing:.05px!important;padding:10px 3px!important}
-.noturno-v8 #t5 .rel5>h3,.noturno-v8 #t5 #bs-box>h3,.noturno-v8 #t5 .rel5 .print-target h3{background:#163b29!important;color:#fff!important}
-@media(max-width:600px){#t5 .rel5>h3,#t5 #bs-box>h3,#t5 .rel5 .print-target h3{font-size:15px!important;padding:10px 5px!important}#t5 .rel5>h3.rel5-title-wide-v1{font-size:clamp(10.5px,3.35vw,13.5px)!important;padding-left:2px!important;padding-right:2px!important}}
+.noturno-v8 #t5 .rel5>h3,.noturno-v8 #t5 #bs-box>h3{background:#163b29!important;color:#fff!important}
+@media(max-width:600px){#t5 .rel5>h3,#t5 #bs-box>h3{font-size:15px!important;padding:10px 5px!important}#t5 .rel5>h3.rel5-title-wide-v1{font-size:clamp(10.5px,3.35vw,13.5px)!important;padding-left:2px!important;padding-right:2px!important}}
 </style>
 <script id="relatorios-titulos-padrao-vans-v1">
 (function(){function styleTitles(){var t=document.getElementById('t5');if(!t)return;t.querySelectorAll('.rel5>h3,#bs-box>h3,.rel5 .print-target h3').forEach(function(h){h.classList.add('area-titulo-v8');var tx=String(h.textContent||'').toLowerCase();if(tx.indexOf('relatório de cliques por máquina')>=0)h.classList.add('rel5-title-wide-v1')})}function start(){styleTitles();var t=document.getElementById('t5');if(t)new MutationObserver(styleTitles).observe(t,{childList:true,subtree:true,characterData:true})}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start()})();
