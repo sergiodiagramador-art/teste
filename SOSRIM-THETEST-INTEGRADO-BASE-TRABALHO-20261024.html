@@ -244,20 +244,20 @@ body:has(#modo-noturno-v8:checked) nav button.active{color:#34d399!important;tex
   </div>
 </div>
 
-<h3>GPS e máquinas liberadas</h3><div style="background:white;padding:15px;border-radius:15px;margin-bottom:15px;font-size:16px"><b>📍 Rastreamento e rotas</b><p>As máquinas liberadas aparecem abaixo. A <b>rota completa</b> passa por todos os hospitais e termina na base. O botão individual leva somente ao hospital escolhido.</p><button class="btn" onclick="abrirRotaGeral()" style="background:#2563eb;color:white">🗺️ ABRIR ROTA COMPLETA — TODOS OS HOSPITAIS</button><div id="rota-tempo-v8" style="font-size:14px;color:#64748b"></div></div>
+<h3 class="area-titulo-v8">BUSCAR MÁQUINAS</h3><div style="background:white;padding:15px;border-radius:15px;margin-bottom:15px;font-size:16px"><b>📍 Rastreamento e rotas</b><p>As máquinas liberadas aparecem abaixo. A <b>rota completa</b> passa por todos os hospitais e termina na base. O botão individual leva somente ao hospital escolhido.</p><button class="btn" onclick="abrirRotaGeral()" style="background:#2563eb;color:white">🗺️ ABRIR ROTA COMPLETA — TODOS OS HOSPITAIS</button><div id="rota-tempo-v8" style="font-size:14px;color:#64748b"></div></div>
 <div id="recolhimento-alerta" style="background:#f8fafc; border:1px solid #cbd5e1; padding:15px; border-radius:15px;">
 <p style="color:#475569; margin-top:0"><b>🚨 Liberações para Recolher:</b></p>
 <div id="lista-recolher">Nenhum hospital liberado agora.</div>
 </div>
 </div> <div class="page" id="t3">
-<h3>Hospitais (PIN)</h3>
-<input id="h-nome" type="text" placeholder="Nome do Hospital" translate="no" class="notranslate" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" inputmode="text"/>
-<button class="btn" onclick="capturarPIN()" style="background:#334155; color:white">📍 SALVAR PIN NESTE LOCAL</button>
-<button class="btn" onclick="addHosp()" style="background:#2563eb; color:white">SALVAR HOSPITAL NA LISTA</button>
+<h3 class="area-titulo-v8">HOSPITAIS (INCLUSÃO E EXCLUSÃO)</h3>
+<input id="h-nome" type="text" placeholder="INCLUIR NOVO HOSPITAL" translate="no" class="notranslate" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" inputmode="text" style="width:100%;box-sizing:border-box;padding:13px 16px;margin:0 0 8px;border:1px solid #86efac;border-radius:10px;background:#f0f8f2;color:#14532d;font-size:16px;font-weight:800"/>
+<button class="btn" onclick="capturarPIN()" style="width:100%;box-sizing:border-box;display:block;margin:0 0 8px;background:#2f7a4f;color:white">📍 SALVAR PIN NESTE LOCAL</button>
+<button class="btn" onclick="addHosp()" style="width:100%;box-sizing:border-box;display:block;margin:0 0 12px;background:#2f7a4f;color:white">SALVAR HOSPITAL NA LISTA</button>
 <div id="lista-hospitais"></div>
 </div>
 <div class="page" id="t4">
-<h3>Gestão de Máquinas</h3>
+<h3 class="area-titulo-v8">GESTÃO DE MÁQUINAS</h3>
 <input id="m-id" placeholder="Número da Máquina" type="number"/>
 <button class="btn" onclick="addMaq()" style="background:#2563eb; color:white">ADICIONAR MÁQUINA</button>
 <hr/>
@@ -1241,5 +1241,15 @@ body.noturno-v8 #sosrim-arrival-strip-v1.sa-tone-lilac,body:has(#modo-noturno-v8
 <script id="arrival-mobile-driver-only-v1">(function(){function blocked(){var u=String((document.getElementById('user-display')||{}).textContent||'').trim().normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();return ['sergio','aderildo','jairo'].indexOf(u)<0||document.body.classList.contains('pc-mode')||window.innerWidth>600}function guard(){var b=document.getElementById('sosrim-test-isolated-banner');if(b){b.style.display='none';b.setAttribute('aria-hidden','true')}if(blocked()&&window.sosrimArrivalDemoStopV1)window.sosrimArrivalDemoStopV1()}function wrap(){if(typeof window.sosrimArrivalDemoStartV1==='function'&&!window.sosrimArrivalDemoStartV1.__driverMobileOnly){var old=window.sosrimArrivalDemoStartV1;var fn=function(){if(blocked())return;return old.apply(this,arguments)};fn.__driverMobileOnly=true;window.sosrimArrivalDemoStartV1=fn}guard()}function start(){wrap();var u=document.getElementById('user-display');if(u)new MutationObserver(wrap).observe(u,{childList:true,characterData:true,subtree:true});new MutationObserver(wrap).observe(document.body,{attributes:true,attributeFilter:['class']});window.addEventListener('resize',wrap);window.addEventListener('orientationchange',wrap);setInterval(wrap,800)}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start()})();</script>
 
 <style id="cabecalho-topo-respiro-2px-v1">@media(max-width:600px){body header{margin-top:2px!important}}</style>
+
+<style id="relatorios-busca-padrao-vans-v1">
+#t5 .rel5>h3,#t5 #bs-box>h3,#t5 .rel5 .print-target h3{background:#2f7a4f!important;color:#fff!important;text-align:center!important;font-size:17px!important;font-weight:900!important;letter-spacing:.6px!important;text-transform:uppercase!important;border-radius:10px!important;padding:10px 8px!important;margin:0 0 12px!important;box-shadow:0 2px 5px #0002!important;box-sizing:border-box!important;width:100%!important}
+#t5 .rel5>h3.rel5-title-wide-v1{white-space:nowrap!important;overflow:hidden!important;text-overflow:clip!important;font-size:clamp(11px,3.65vw,15px)!important;letter-spacing:.05px!important;padding:10px 3px!important}
+.noturno-v8 #t5 .rel5>h3,.noturno-v8 #t5 #bs-box>h3,.noturno-v8 #t5 .rel5 .print-target h3{background:#163b29!important;color:#fff!important}
+@media(max-width:600px){#t5 .rel5>h3,#t5 #bs-box>h3,#t5 .rel5 .print-target h3{font-size:15px!important;padding:10px 5px!important}#t5 .rel5>h3.rel5-title-wide-v1{font-size:clamp(10.5px,3.35vw,13.5px)!important;padding-left:2px!important;padding-right:2px!important}}
+</style>
+<script id="relatorios-titulos-padrao-vans-v1">
+(function(){function styleTitles(){var t=document.getElementById('t5');if(!t)return;t.querySelectorAll('.rel5>h3,#bs-box>h3,.rel5 .print-target h3').forEach(function(h){h.classList.add('area-titulo-v8');var tx=String(h.textContent||'').toLowerCase();if(tx.indexOf('relatório de cliques por máquina')>=0)h.classList.add('rel5-title-wide-v1')})}function start(){styleTitles();var t=document.getElementById('t5');if(t)new MutationObserver(styleTitles).observe(t,{childList:true,subtree:true,characterData:true})}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start()})();
+</script>
 </body>
 </html>
