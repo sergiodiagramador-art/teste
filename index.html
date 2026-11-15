@@ -1577,5 +1577,13 @@ nav button{ min-width:0!important; max-width:100%; white-space:normal!important;
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',scan,{once:true});else scan();var mo=new MutationObserver(scan);mo.observe(document.body,{childList:true,subtree:true});setTimeout(scan,200);setTimeout(scan,700);window.sosrimLayoutStabilityScanV1=scan;
 })();
 </script>
+<script id="sosrim-click-search-clear-v1">
+(function(){
+ function clearClickSearch(){window.maqCliqueSelecionadaV8=null;var detail=document.getElementById('rel5-maq-cliques-detalhe');if(detail)detail.innerHTML='';var driver=document.getElementById('rel5-cliques-motorista');if(driver)driver.value='Todos';var day=document.getElementById('rel5-cliques-dia');if(day)day.value='Todos';var grid=document.getElementById('rel5-maq-cliques-grid');if(grid)grid.querySelectorAll('button').forEach(function(b){b.style.outline='';b.style.boxShadow='';b.setAttribute('aria-pressed','false')})}
+ function install(){var grid=document.getElementById('rel5-maq-cliques-grid');if(!grid)return;var section=grid.closest('.rel5');if(!section)return;var old=document.getElementById('rel5-cliques-clear-v1');if(old)return;var b=document.createElement('button');b.type='button';b.id='rel5-cliques-clear-v1';b.className='btn';b.textContent='LIMPAR PESQUISA';b.setAttribute('aria-label','Limpar pesquisa anterior de cliques por máquina');b.style.cssText='display:block;width:100%;margin:8px 0;background:#64748b;color:#fff;font-weight:800';b.addEventListener('click',clearClickSearch);section.insertBefore(b,grid)}
+ var original=window.entrar;if(typeof original==='function'&&!original.__clearClickSearchV1){var wrapped=function(){clearClickSearch();var r=original.apply(this,arguments);setTimeout(function(){clearClickSearch();install()},1800);return r};wrapped.__clearClickSearchV1=true;window.entrar=wrapped}
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install();var mo=new MutationObserver(install);mo.observe(document.body,{childList:true,subtree:true});setTimeout(install,500);setTimeout(install,1800);window.sosrimClearClickSearchV1=clearClickSearch;
+})();
+</script>
 </body>
 </html>
